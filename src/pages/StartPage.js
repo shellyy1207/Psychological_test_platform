@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { message } from "antd";
+import { message, Form } from "antd";
 import { useTranslation } from "react-i18next";
-import { Form } from "antd";
 
 import IntroScreen from "../components/start/IntroScreen";
 import NameInputScreen from "../components/start/NameInputScreen";
 
 const StartPage = () => {
-  const [step, setStep] = useState("intro"); // intro → transition → nameInput
+  const [step, setStep] = useState("intro");
   const [form] = Form.useForm();
   const [lastResult, setLastResult] = useState(null);
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ const StartPage = () => {
     setStep("transition");
     setTimeout(() => {
       setStep("nameInput");
-    }, 3000); // 3秒後進入輸入名字
+    }, 3000);
   };
 
   const handleSubmit = () => {
@@ -44,43 +43,47 @@ const StartPage = () => {
       });
   };
 
-  const handleClearLastResult = () => {
-    localStorage.removeItem("sanrio-last-result");
-    setLastResult(null);
-  };
-
   return (
     <div style={styles.container}>
-
-      {step === "intro" && <IntroScreen onStart={handleStartTransition} />}
-      {step === "nameInput" && <NameInputScreen form={form} onSubmit={handleSubmit} />}
-
-      <AnimatePresence>
-        {step === "transition" && (
-          <motion.div
-            key="transition"
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: 1, scale: 1.1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
-            style={styles.transitionScreen}
-          >
-            <h2 style={{ color: "#fff", fontSize: "28px" }}>
-              {t("transition_text")}
-            </h2>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div style={styles.inner}>
+        {step === "intro" && <IntroScreen onStart={handleStartTransition} />}
+        {step === "nameInput" && <NameInputScreen form={form} onSubmit={handleSubmit} />}
+        <AnimatePresence>
+          {step === "transition" && (
+            <motion.div
+              key="transition"
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{ opacity: 1, scale: 1.1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5 }}
+              style={styles.transitionScreen}
+            >
+              <h2 style={{ color: "#fff", fontSize: "28px" }}>
+                {t("transition_text")}
+              </h2>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
 
 const styles = {
   container: {
-    textAlign: "center",
-    fontFamily: "sans-serif",
     backgroundColor: "#fffefc",
-    padding: "3rem 1rem",
+    minHeight: "calc(100vh - 165px - 100px)", // 扣掉 header + footer 的高度
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "2rem 1rem",
+    fontFamily: "sans-serif",
+  },
+  inner: {
+    width: "100%",
+    maxWidth: "600px",
+    textAlign: "center",
+    margin: "0 auto", // 自動置中
   },
   transitionScreen: {
     position: "fixed",
@@ -95,25 +98,7 @@ const styles = {
     zIndex: 9999,
     backdropFilter: "blur(8px)",
   },
-  lastResult: {
-    backgroundColor: "#fff0f5",
-    padding: "1rem",
-    borderRadius: "12px",
-    marginBottom: "2rem",
-    border: "1px solid #ffb6c1",
-    maxWidth: "480px",
-    marginLeft: "auto",
-    marginRight: "auto",
-    textAlign: "left",
-  },
-  clearBtn: {
-    marginTop: "0.5rem",
-    background: "none",
-    border: "none",
-    color: "#d33",
-    cursor: "pointer",
-    fontSize: "14px",
-  }
 };
+
 
 export default StartPage;

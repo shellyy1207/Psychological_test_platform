@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { SoundOutlined, SoundFilled } from "@ant-design/icons";
 import { Routes, Route, useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Button, Space, Tooltip, Drawer } from "antd";
+import { Button, Space, Tooltip } from "antd";
 import "./i18n";
 
 import StartPage from "./pages/StartPage";
@@ -11,7 +11,7 @@ import HistoryPage from "./pages/HistoryPage";
 import TestPage from "./pages/TestPage";
 import ResultLoading from "./pages/ResultLoading";
 import ResultPage from "./pages/ResultPage";
-
+import Footer from "./components/Footer";
 
 function App() {
   const { i18n } = useTranslation();
@@ -22,7 +22,8 @@ function App() {
   useEffect(() => {
     if (
       location.pathname === "/" ||
-      ["/test", "/result-loading", "/result"].includes(location.pathname)) {
+      ["/test", "/result-loading", "/result"].includes(location.pathname)
+    ) {
       audioRef.current?.play().catch(() => {});
     } else {
       audioRef.current?.pause();
@@ -31,8 +32,8 @@ function App() {
   }, [location]);
 
   return (
-    <>
-      {/* 頁首 Header */}
+    <div style={styles.pageWrapper}>
+      {/* Header */}
       <div style={styles.header}>
         <div style={styles.left}>
           <Link to="/" style={styles.logo}>
@@ -45,9 +46,9 @@ function App() {
                 關於測驗
               </Link>
             </Button>
-              <Link to="/history" style={{ ...styles.navBtn, textDecoration: "none" }}>
-                上次測驗結果
-              </Link>
+            <Link to="/history" style={{ ...styles.navBtn, textDecoration: "none" }}>
+              最近測驗結果
+            </Link>
             <Button
               type="text"
               style={styles.navBtn}
@@ -58,7 +59,6 @@ function App() {
             </Button>
           </Space>
         </div>
-
         <div style={styles.right}>
           <Space>
             <Button size="small" onClick={() => i18n.changeLanguage("zh")}>中文</Button>
@@ -76,14 +76,13 @@ function App() {
         </div>
       </div>
 
-
       {/* 背景音樂 */}
       <audio ref={audioRef} loop muted={muted}>
         <source src="/music/bg.mp3" type="audio/mpeg" />
       </audio>
 
-      {/* 路由頁面 */}
-      <div style={{ paddingTop: "64px" }}>
+      {/* Main Content */}
+      <div style={styles.main}>
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -93,11 +92,19 @@ function App() {
           <Route path="/result" element={<ResultPage />} />
         </Routes>
       </div>
-    </>
+
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 }
 
 const styles = {
+  pageWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
+  },
   header: {
     position: "fixed",
     top: 0,
@@ -113,41 +120,38 @@ const styles = {
     zIndex: 1000,
     boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
   },
-
+  main: {
+    flex: 1,
+    paddingTop: "80px", // 避開固定 header
+  },
   left: {
     display: "flex",
     alignItems: "center",
   },
-
   right: {
     display: "flex",
     alignItems: "center",
   },
-
   logo: {
     display: "flex",
     alignItems: "center",
-    textDecoration: "none", // 取消連結下劃線
+    textDecoration: "none",
   },
-
   logoImage: {
     height: "36px",
     marginRight: "0.5rem",
   },
-
   logoText: {
     fontWeight: "bold",
     fontSize: "22px",
     color: "#f78fb3",
     fontFamily: "'Comic Sans MS', sans-serif",
   },
-
   navBtn: {
-    color: "#555",        // 不是藍色連結！
+    color: "#555",
     fontWeight: "500",
     fontSize: "14px",
   },
-
 };
 
 export default App;
