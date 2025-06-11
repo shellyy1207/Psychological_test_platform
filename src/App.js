@@ -19,21 +19,6 @@ function App() {
   const audioRef = useRef(null);
   const [muted, setMuted] = useState(false);
 
-  
-  const [lastResult, setLastResult] = useState(null);
-  const [showLastResult, setShowLastResult] = useState(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("sanrio-last-result");
-    if (saved) {
-      try {
-        setLastResult(JSON.parse(saved));
-      } catch (e) {
-        console.error("Failed to load last result", e);
-      }
-    }
-  }, []);
-
   useEffect(() => {
     if (
       location.pathname === "/" ||
@@ -60,15 +45,13 @@ function App() {
                 關於測驗
               </Link>
             </Button>
-            <Link to="/history" style={{ ...styles.navBtn, textDecoration: "none" }}>
-              上次測驗結果
-            </Link>
-
-
+              <Link to="/history" style={{ ...styles.navBtn, textDecoration: "none" }}>
+                上次測驗結果
+              </Link>
             <Button
               type="text"
               style={styles.navBtn}
-              href="https://github.com/你的專案"
+              href="https://github.com/shellyy1207/Psychological_test_platform"
               target="_blank"
             >
               GitHub
