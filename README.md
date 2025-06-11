@@ -41,22 +41,24 @@
 
 ## 📁 專案結構（部分）
 
-📁 src/
+```txt
+src/
 ├── App.js
 ├── i18n.js
 ├── questions.js
 ├── pages/
-│ ├── StartPage.js
-│ ├── TestPage.js
-│ ├── ResultPage.js
-│ ├── ResultLoading.js
-│ ├── HistoryPage.js
-│ └── AboutPage.js
-└── components/
-└── start/
-├── IntroScreen.js
-└── NameInputScreen.js
+│   ├── StartPage.js
+│   ├── TestPage.js
+│   ├── ResultPage.js
+│   ├── ResultLoading.js
+│   ├── HistoryPage.js
+│   └── AboutPage.js
+├── components/
+│   └── start/
+│       ├── IntroScreen.js
+│       └── NameInputScreen.js
 
+```
 ---
 
 ## 🚀 使用方式
