@@ -26,7 +26,7 @@ const ResultPage = () => {
   const { nickname, scores } = location.state || {};
 
   const [copied, setCopied] = useState(false);
-  const shareUrl = "https://your-sanrio-app.netlify.app/";
+  const shareUrl = "http://localhost:3000/about";
 
   const resultCharacter = scores
     ? Object.entries(scores).reduce((a, b) => (b[1] > a[1] ? b : a))[0]
