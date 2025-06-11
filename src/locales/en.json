@@ -1,100 +1,123 @@
 {
-  "story": "You are walking home, and the sunlight filters through the leaves. Just as you yawn and think about what to have for dinner, everything goes dark, and you faint. When you slowly open your eyes, you find yourself lying on a brightly lit street in a small town. A few cute little dwarfs are gathered around you, and one of them gently asks, 'What is your name?'",
-  "title": "Which Sanrio character are you?",
-  "start": "Start Test",
-  "placeholder": "Enter your name or nickname",
-  "question": "{{nickname}}, {{text}}",
-  "your_result": "{{nickname}}, you are most like...",
-  "again": "Try Again",
-  "question_title": "Question {{current}} / {{total}}",
-  "no_result": "Oops! No result found 😅",
-  "calculating_result": "Analyzing your results...",
-  "characterDescriptions": {
-    "大耳狗": "Quiet and calm, likes to be with people, but also enjoys quietly sunbathing on the terrace of a café alone.",
-    "帕恰狗": "Curious and a bit absent-minded, always主动地接近别人，是活泼的朋友型角色。",
-    "雙星仙子Lala": "Introverted and gentle, loves to cry and draw, is a感性的创作者。",
-    "雙星仙子Kiki": "Full of energy, interested in new things, always has many plans in mind.",
-    "庫洛米": "Outwardly rebellious, but inwardly delicate and kind, is a小坏坏 with a少女心。",
-    "大眼蛙": "Lively and active, optimistic and cheerful, is the冒险王 and mood maker in everyone's heart!"
-  },
+    "start_title":"Which character in Sanrio Town are you?",
+    "start_description":"A mysterious and cute psychological adventure awaits you. Let's find the character that suits you best!",
+    "start_button":"Start Test",
 
-  "questions": [
-        {
-        "question": "After chatting with the little dwarfs, they enthusiastically want to show you around the town. You will...",
-        "options": [
-            "Lie down on the big lawn and take a nap",
-            "Run to the pond and play in the water",
-            "Find a stranger in town to play with",
-            "Stay put and document this adventure",
-            "Find a scenic spot to draw",
-            "Rush off to explore the map"
+    "story_part2": "As you slowly open your eyes, you find yourself lying on a brightly lit street in a small town, surrounded by cute little dwarfs. One of them gently asks: 'What is your name?'",
+    "placeholder": "Please enter your name or nickname",
+    "start": "Start",
+
+    "about_title": "About the Quiz",
+    "about_paragraph1": "“Which Sanrio Character Are You in the Magical Town?” is a story-based personality quiz. Based on your responses, we match you with the Sanrio character that best fits your personality.",
+    "about_paragraph2": "The quiz includes 7 multiple-choice questions and an opening story. It supports multiple languages and animated effects. We hope this experience brings joy and healing to you ✨",
+
+    "transition_text": "You are walking home, with sunlight filtering through the leaves, yawning and thinking about what to have for dinner, when suddenly everything goes black and you faint!",
+    
+    "last_result_title": "Last Test Result",
+    "last_result_tip": "{{name}}'s last character was: {{character}} 🎀",
+    "last_result_time": "Test Time: {{time}}",
+    "clear_history": "Clear History",
+    "back_home": "Back to Home",
+
+    "question": "{{nickname}}, {{text}}",
+    "your_result": "{{nickname}}, you are most like...",
+    "again": "Try Again",
+    "question_title": "Question {{current}} / {{total}}",
+    "no_result": "Oops! No result found 😅",
+    "calculating_result": "Analyzing your results...",
+    
+    "share_prompt": "Share your result with friends!",
+    "share_message": "I got '{{character}}' in the Sanrio psychological quiz! Come see who you are~",
+    "copy_link": "Copy Result Link",
+    "copy_success": "Link copied to clipboard!",
+    
+    "characterDescriptions": {
+        "大耳狗": "Quiet and calm, likes to be with people, but also enjoys quietly sunbathing on the terrace of a café alone.",
+        "帕恰狗": "Curious and a bit absent-minded, always主动地接近别人，是活泼的朋友型角色。",
+        "雙星仙子Lala": "Introverted and gentle, loves to cry and draw, is a感性的创作者。",
+        "雙星仙子Kiki": "Full of energy, interested in new things, always has many plans in mind.",
+        "庫洛米": "Outwardly rebellious, but inwardly delicate and kind, is a小坏坏 with a少女心。",
+        "大眼蛙": "Lively and active, optimistic and cheerful, is the冒险王 and mood maker in everyone's heart!"
+    },
+
+    "questions": [
+            {
+            "question": "After chatting with the little dwarfs, they enthusiastically want to show you around the town. You will...",
+            "options": [
+                "Lie down on the big lawn and take a nap",
+                "Run to the pond and play in the water",
+                "Find a stranger in town to play with",
+                "Stay put and document this adventure",
+                "Find a scenic spot to draw",
+                "Rush off to explore the map"
+            ]
+            },
+            {
+            "question": "Unable to resist the enthusiasm of the little dwarfs, you see a very sad dwarf along the way. You will...",
+            "options": [
+                "Quietly accompany them, no words needed",
+                "Ask many questions to find out what's wrong",
+                "Take them for dessert to cheer them up",
+                "Pretend not to see and quickly pass by",
+                "Chat with them to express their emotions",
+                "Immediately take them to play to distract them"
+            ]
+            },
+            {
+            "question": "You arrive at a mysterious shop, and the owner says they can give you a souvenir. You will choose...",
+            "options": [
+                "Politely refuse (but the owner insists on giving it anyway)",
+                "A bag of candies with many strange flavors",
+                "A cute cat-shaped robot",
+                "A mysterious treasure map",
+                "An ancient-looking clay tablet",
+                "A hat that the owner says suits you perfectly"
+            ]
+            },
+            {
+            "question": "Suddenly, the weather turns cloudy, and everyone in town runs home. You will...",
+            "options": [
+                "Start crying out of fear",
+                "Look forward to the upcoming heavy rain",
+                "Shout why they can just leave!",
+                "Run under a roof to avoid the rain",
+                "Look for lotus leaves in the pond to make an umbrella",
+                "Seek a kind person for shelter"
+            ]
+            },
+            {
+            "question": "After the rain stops, you accidentally get lost in town. There are six paths by the roadside. Which one will you choose?",
+            "options": [
+                "The path with the sound of flowing water",
+                "The path with a cotton candy scent",
+                "The path filled with various colors",
+                "The path filled with laughter and joy",
+                "The path with strange buildings ahead",
+                "The pitch-black path"
+            ]
+            },
+            {
+            "question": "As you walk along the path, you suddenly feel drowsy and before you fall asleep, you vaguely see someone approaching from ahead. He is...",
+            "options": [
+                "An angel",
+                "A monster",
+                "A shadow",
+                "A little dwarf",
+                "A ghost",
+                "A handsome/beautiful person"
+            ]
+            },
+            {
+            "question": "When you open your eyes, you find yourself lying in your own bed. As you wonder, 'Is this a dream...?', you realize you are holding the souvenir the shopkeeper gave you. Knowing this is not a dream, you decide to...",
+            "options": [
+                "Record this adventure in your diary",
+                "Treasure the souvenir",
+                "Share this experience with everyone",
+                "Embark on an adventure to find the town",
+                "Recall the scenery at the time and draw it",
+                "Find a way back to the town"
+            ]
+            }
         ]
-        },
-        {
-        "question": "Unable to resist the enthusiasm of the little dwarfs, you see a very sad dwarf along the way. You will...",
-        "options": [
-            "Quietly accompany them, no words needed",
-            "Ask many questions to find out what's wrong",
-            "Take them for dessert to cheer them up",
-            "Pretend not to see and quickly pass by",
-            "Chat with them to express their emotions",
-            "Immediately take them to play to distract them"
-        ]
-        },
-        {
-        "question": "You arrive at a mysterious shop, and the owner says they can give you a souvenir. You will choose...",
-        "options": [
-            "Politely refuse (but the owner insists on giving it anyway)",
-            "A bag of candies with many strange flavors",
-            "A cute cat-shaped robot",
-            "A mysterious treasure map",
-            "An ancient-looking clay tablet",
-            "A hat that the owner says suits you perfectly"
-        ]
-        },
-        {
-        "question": "Suddenly, the weather turns cloudy, and everyone in town runs home. You will...",
-        "options": [
-            "Start crying out of fear",
-            "Look forward to the upcoming heavy rain",
-            "Shout why they can just leave!",
-            "Run under a roof to avoid the rain",
-            "Look for lotus leaves in the pond to make an umbrella",
-            "Seek a kind person for shelter"
-        ]
-        },
-        {
-        "question": "After the rain stops, you accidentally get lost in town. There are six paths by the roadside. Which one will you choose?",
-        "options": [
-            "The path with the sound of flowing water",
-            "The path with a cotton candy scent",
-            "The path filled with various colors",
-            "The path filled with laughter and joy",
-            "The path with strange buildings ahead",
-            "The pitch-black path"
-        ]
-        },
-        {
-        "question": "As you walk along the path, you suddenly feel drowsy and before you fall asleep, you vaguely see someone approaching from ahead. He is...",
-        "options": [
-            "An angel",
-            "A monster",
-            "A shadow",
-            "A little dwarf",
-            "A ghost",
-            "A handsome/beautiful person"
-        ]
-        },
-        {
-        "question": "When you open your eyes, you find yourself lying in your own bed. As you wonder, 'Is this a dream...?', you realize you are holding the souvenir the shopkeeper gave you. Knowing this is not a dream, you decide to...",
-        "options": [
-            "Record this adventure in your diary",
-            "Treasure the souvenir",
-            "Share this experience with everyone",
-            "Embark on an adventure to find the town",
-            "Recall the scenery at the time and draw it",
-            "Find a way back to the town"
-        ]
-        }
-    ]
-}
+    }
+

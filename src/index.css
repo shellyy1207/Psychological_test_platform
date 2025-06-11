@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 8px rgba(251, 177, 216, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(251, 177, 216, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(251, 177, 216, 0.3);
+  }
+}
