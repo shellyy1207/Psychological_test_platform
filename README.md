@@ -1,50 +1,56 @@
 # 🎀 Sanrio 心理測驗平台
 
-你是哪個三麗鷗角色？  
+測測你是哪個三麗鷗角色吧？  
 透過 7 道互動式心理題目，分析你的個性，看看你最像的是大耳狗、帕恰狗、庫洛米，還是雙星仙子？
 
 ---
 
 ## 🔗 Demo 頁面
 
-👉 [點我開始測驗](http://localhost:3000)  
+👉 [點我開始測驗](http://localhost:3000)
 
 ---
 
 ## 📝 專案介紹
 
 本專案為一個以 **Sanrio（三麗鷗）角色為主題**的互動心理測驗平台，使用 React 架構開發，支援：
-- 多語系切換（中文 / 英文 / 日文）
-- 使用者暱稱輸入與個性化問句
-- 測驗過場動畫與得分邏輯計算
-- 結果角色分析與圖文呈現
-- Facebook / Line / 複製連結 一鍵分享
-- localStorage 記錄上次測驗結果
+
+- 🎯 個性化心理測驗流程（含暱稱輸入、動畫轉場）
+- 🌐 多語系切換（中文 / 英文 / 日文）全站翻譯
+- 📊 測驗結果計算與角色判斷
+- 📋 localStorage 紀錄所有測驗歷史
+- 📱 結果頁一鍵分享（Facebook / Line / 複製連結）
+- 🖼️ 角色介紹區使用 Swiper 套件展示 3D 卡片效果
 
 ---
 
 ## ⚙️ 使用技術與套件
 
-| 分類 | 套件名稱 | 功能描述 |
-|------|-----------|----------|
-| 核心框架 | `react`, `react-dom` | 建立前端架構 |
-| 路由系統 | `react-router-dom` | 控制頁面導覽 |
-| UI 元件庫 | `antd` | 表單、按鈕、進度條等介面 |
-| 動畫 | `framer-motion` | 過場動畫、複製提示 |
-| 多語系 | `i18next`, `react-i18next` | 語言切換與翻譯管理 |
-| 分享功能 | `react-share` | Facebook、Line 分享按鈕 |
-| 連結複製 | `react-copy-to-clipboard` | 一鍵複製分享連結 |
-| 圖示 | `react-icons` | 使用 Line 與連結 icon |
+| 分類       | 套件名稱                                        | 功能描述                      |
+|------------|--------------------------------------------------|-------------------------------|
+| 前端框架   | `react`, `react-dom`                            | 建立 SPA 前端應用             |
+| 路由控制   | `react-router-dom`                              | 多頁導覽切換                  |
+| UI 元件    | `antd`                                           | 表單、按鈕、排版等元件  |
+| 動畫特效   | `framer-motion`                                 | 頁面轉場、動畫提示            |
+| 國際化     | `i18next`, `react-i18next`                      | 多語系切換與翻譯              |
+| 分享功能   | `react-share`                                   | FB、Line 分享按鈕             |
+| 複製連結   | `react-copy-to-clipboard`                       | 一鍵複製結果連結              |
+| 圖示資源   | `react-icons`                                   | 使用 icons（如連結、Line）    |
+| 輪播套件   | `swiper`                                        | 在角色介紹中顯示 3D 卡片特效  |
 
 ---
 
-## 📁 專案結構（部分）
+## 📁 專案結構（節錄）
 
 ```txt
 src/
-├── App.js
-├── i18n.js
-├── questions.js
+├── App.js                     # 主架構與路由定義
+├── i18n.js                    # 多語系初始化
+├── questions.js               # 測驗題目設定
+├── locales/                  # 各語系翻譯 JSON
+│   ├── zh.json
+│   ├── en.json
+│   └── ja.json
 ├── pages/
 │   ├── StartPage.js
 │   ├── TestPage.js
@@ -53,13 +59,13 @@ src/
 │   ├── HistoryPage.js
 │   └── AboutPage.js
 ├── components/
+│   ├── Footer.js              # 網站頁尾
 │   └── start/
 │       ├── IntroScreen.js
 │       └── NameInputScreen.js
-
 ```
----
 
+---
 ## 🚀 使用方式
 
 ```bash
@@ -71,12 +77,13 @@ npm start
 ```
 
 ---
-💻 環境需求
+
+## 💻 環境需求
 Node.js 18+
 
 npm 9+
 
-建議使用 Chrome / Edge 等現代瀏覽器
+現代瀏覽器（建議使用 Chrome 或 Edge）
 
 ---
 
@@ -87,8 +94,9 @@ npm 9+
 
 姓名：張庭溱
 
+---
+
 ## 🎵 素材來源
 bg.mp3：來自線上免費音樂庫（如 Free Music Archive、Pixabay Music）
 
-角色圖片：引用自 Wikipedia，僅供非商業展示使用
-
+角色圖片：引用自 Sanrio 官方或 Wikipedia，僅供學術與非商業用途展示
