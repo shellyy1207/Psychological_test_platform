@@ -14,7 +14,7 @@ import ResultPage from "./pages/ResultPage";
 import Footer from "./components/Footer";
 
 function App() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const location = useLocation();
   const audioRef = useRef(null);
   const [muted, setMuted] = useState(false);
@@ -43,19 +43,21 @@ function App() {
           <Space size="middle" style={{ marginLeft: "2rem" }}>
             <Button type="text" style={styles.navBtn}>
               <Link to="/about" style={{ textDecoration: "none", color: "#555" }}>
-                關於測驗
+                {t("nav.about")}
               </Link>
             </Button>
-            <Link to="/history" style={{ ...styles.navBtn, textDecoration: "none" }}>
-              最近測驗結果
-            </Link>
+            <Button type="text" style={styles.navBtn}>
+              <Link to="/history" style={{ textDecoration: "none", color: "#555" }}>
+                {t("nav.history")}
+              </Link>
+            </Button>
             <Button
               type="text"
               style={styles.navBtn}
               href="https://github.com/shellyy1207/Psychological_test_platform"
               target="_blank"
             >
-              GitHub
+              {t("nav.github")}
             </Button>
           </Space>
         </div>
@@ -64,7 +66,7 @@ function App() {
             <Button size="small" onClick={() => i18n.changeLanguage("zh")}>中文</Button>
             <Button size="small" onClick={() => i18n.changeLanguage("en")}>EN</Button>
             <Button size="small" onClick={() => i18n.changeLanguage("ja")}>日文</Button>
-            <Tooltip title={muted ? "開啟音樂" : "靜音"}>
+            <Tooltip title={muted ? t("sound.on") : t("sound.off")}>
               <Button
                 size="small"
                 shape="circle"
@@ -76,7 +78,7 @@ function App() {
         </div>
       </div>
 
-      {/* 背景音樂 */}
+      {/* 音樂播放 */}
       <audio ref={audioRef} loop muted={muted}>
         <source src="/music/bg.mp3" type="audio/mpeg" />
       </audio>
@@ -93,7 +95,6 @@ function App() {
         </Routes>
       </div>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
@@ -122,7 +123,7 @@ const styles = {
   },
   main: {
     flex: 1,
-    paddingTop: "80px", // 避開固定 header
+    paddingTop: "80px",
   },
   left: {
     display: "flex",

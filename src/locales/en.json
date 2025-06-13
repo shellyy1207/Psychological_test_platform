@@ -1,4 +1,14 @@
 {
+    "nav": {
+        "about": "About This Test",
+        "history": "Recent Results",
+        "github": "GitHub"
+    },
+    "sound": {
+        "on": "Turn Music On",
+        "off": "Mute"
+    },
+    
     "start_title":"Which character in Sanrio Town are you?",
     "start_description":"A mysterious and cute psychological adventure awaits you. Let's find the character that suits you best!",
     "start_button":"Start Test",
@@ -7,9 +17,17 @@
     "placeholder": "Please enter your name or nickname",
     "start": "Start",
 
-    "about_title": "About the Quiz",
-    "about_paragraph1": "“Which Sanrio Character Are You in the Magical Town?” is a story-based personality quiz. Based on your responses, we match you with the Sanrio character that best fits your personality.",
-    "about_paragraph2": "The quiz includes 7 multiple-choice questions and an opening story. It supports multiple languages and animated effects. We hope this experience brings joy and healing to you ✨",
+    "about_title": "About This Test",
+    "about_paragraph1": "Which character in Sanrio Town are you?’ is a psychological test that starts with a story scenario, combining character traits, behavioral choices, and fun questions to find the Sanrio character that best matches your reactions.",
+    "about_paragraph2": "The test includes 7 multiple-choice questions and a story introduction, supports multiple languages and animation effects. We hope that through the company of cute characters, you can feel healing and joy during the process ✨",
+    "character_intro": "Character Introduction",
+    "characters": {
+        "cinnamoroll": "Cinnamoroll",
+        "little_twins": "Little Twin Stars Kiki&Lala",
+        "pochacco": "Pochacco",
+        "keroppi": "Keroppi",
+        "kuromi": "Kuromi"
+    },
 
     "transition_text": "You are walking home, with sunlight filtering through the leaves, yawning and thinking about what to have for dinner, when suddenly everything goes black and you faint!",
     

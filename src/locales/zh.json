@@ -1,4 +1,14 @@
 {
+    "nav": {
+      "about": "關於測驗",
+      "history": "最近測驗結果",
+      "github": "GitHub"
+    },
+    "sound": {
+      "on": "開啟音樂",
+      "off": "靜音"
+    },
+
     "start_title": "你是三麗鷗小鎮裡的哪個角色？",
     "start_description": "一場神秘又可愛的心理冒險，等你來揭曉屬於你的角色！",
     "start_button": "開始測驗",
@@ -10,6 +20,14 @@
     "about_title": "關於這個測驗",
     "about_paragraph1": "《你是三麗鷗小鎮裡的哪個角色？》是一個以故事情境為出發點的心理測驗，結合角色性格、行為選擇與趣味問答，從你的反應中對應最貼近的 Sanrio 角色。",
     "about_paragraph2": "測驗包含 7 題選擇題與一段劇情開場，支援多語系與動畫效果，希望透過可愛的角色陪伴，讓你在過程中感受到療癒與樂趣 ✨",
+    "character_intro": "角色介紹",
+    "characters": {
+      "cinnamoroll": "大耳狗",
+      "little_twins": "雙星仙子",
+      "pochacco": "帕恰狗",
+      "keroppi": "大眼蛙",
+      "kuromi": "庫洛米"
+    },
 
     "transition_text": "你走在回家的路上，陽光從樹葉間灑落，正當你打著哈欠想著晚餐要吃什麼時，\n突然眼前一黑，你竟然昏倒了！",
 

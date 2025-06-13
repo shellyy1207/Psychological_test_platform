@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.character-swiper .swiper-slide {
+  transition: transform 0.3s;
+}

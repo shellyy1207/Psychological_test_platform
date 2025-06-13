@@ -35,16 +35,58 @@ const ResultPage = () => {
   const imageUrl = characterImages[resultCharacter];
   const description = t(`characterDescriptions.${resultCharacter}`);
 
-  useEffect(() => {
-    if (nickname && resultCharacter) {
-      const resultData = {
-        nickname,
-        character: resultCharacter,
-        time: new Date().toISOString()
-      };
-      localStorage.setItem("sanrio-last-result", JSON.stringify(resultData));
+  const [hasSaved, setHasSaved] = useState(false);
+
+useEffect(() => {
+  if (nickname && resultCharacter) {
+    const resultData = {
+      nickname,
+      character: resultCharacter,
+      time: new Date().toISOString()
+    };
+
+    // 儲存最後一次結果
+    localStorage.setItem("sanrio-last-result", JSON.stringify(resultData));
+
+    // 檢查並儲存歷史紀錄
+    const historyKey = "sanrio-history";
+    const existing = localStorage.getItem(historyKey);
+    const parsed = existing ? JSON.parse(existing) : [];
+
+    // 👉 去重檢查：如果上一筆相同就不加
+    const last = parsed[0]; // 最新一筆
+    const isSame =
+      last &&
+      last.nickname === resultData.nickname &&
+      last.character === resultData.character;
+
+    if (!isSame) {
+      const updatedHistory = [resultData, ...parsed];
+      localStorage.setItem(historyKey, JSON.stringify(updatedHistory));
     }
-  }, [nickname, resultCharacter]);
+  }
+}, [nickname, resultCharacter]);
+
+//     // 儲存最新一筆
+//     localStorage.setItem("sanrio-last-result", JSON.stringify(resultData));
+
+//     // 多筆紀錄處理：先讀舊的再加進去
+//     const prevHistory = JSON.parse(localStorage.getItem("sanrio-history")) || [];
+
+//     // ✅ 比較是否和最後一筆相同（防止 useEffect 被多次觸發）
+//     const isDuplicate =
+//       prevHistory.length > 0 &&
+//       prevHistory[prevHistory.length - 1].nickname === resultData.nickname &&
+//       prevHistory[prevHistory.length - 1].character === resultData.character;
+
+//     if (!isDuplicate) {
+//       const updatedHistory = [resultData, ...prevHistory];
+//       localStorage.setItem("sanrio-history", JSON.stringify(updatedHistory));
+//     }
+//   }
+// }, [nickname, resultCharacter]);
+ // 更新歷史紀錄（只新增一次）
+
 
   if (!scores || !nickname) {
     return (
