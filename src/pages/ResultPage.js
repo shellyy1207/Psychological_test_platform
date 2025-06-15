@@ -53,7 +53,7 @@ useEffect(() => {
     const existing = localStorage.getItem(historyKey);
     const parsed = existing ? JSON.parse(existing) : [];
 
-    // 👉 去重檢查：如果上一筆相同就不加
+    // 去重檢查：如果上一筆相同就不加
     const last = parsed[0]; // 最新一筆
     const isSame =
       last &&
@@ -66,27 +66,6 @@ useEffect(() => {
     }
   }
 }, [nickname, resultCharacter]);
-
-//     // 儲存最新一筆
-//     localStorage.setItem("sanrio-last-result", JSON.stringify(resultData));
-
-//     // 多筆紀錄處理：先讀舊的再加進去
-//     const prevHistory = JSON.parse(localStorage.getItem("sanrio-history")) || [];
-
-//     // ✅ 比較是否和最後一筆相同（防止 useEffect 被多次觸發）
-//     const isDuplicate =
-//       prevHistory.length > 0 &&
-//       prevHistory[prevHistory.length - 1].nickname === resultData.nickname &&
-//       prevHistory[prevHistory.length - 1].character === resultData.character;
-
-//     if (!isDuplicate) {
-//       const updatedHistory = [resultData, ...prevHistory];
-//       localStorage.setItem("sanrio-history", JSON.stringify(updatedHistory));
-//     }
-//   }
-// }, [nickname, resultCharacter]);
- // 更新歷史紀錄（只新增一次）
-
 
   if (!scores || !nickname) {
     return (

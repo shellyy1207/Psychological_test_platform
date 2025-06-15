@@ -1,7 +1,6 @@
 import React from "react";
 import { Typography, Button, Space } from "antd";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const { Title, Paragraph } = Typography;
