@@ -4,8 +4,13 @@ import { useTranslation } from "react-i18next";
 
 const { Title, Paragraph } = Typography;
 
-const NameInputScreen = ({ form, onSubmit }) => {
+const NameInputScreen = ({ onSuccess }) => {
   const { t } = useTranslation();
+  const [form] = Form.useForm(); 
+
+  const handleFinish = (values) => {
+    onSuccess(values.nickname); //呼叫傳入的 onSuccess prop
+  };
 
   return (
     <div style={styles.container}>
@@ -17,8 +22,17 @@ const NameInputScreen = ({ form, onSubmit }) => {
       </Paragraph>
 
       <Space direction="vertical" size="large" align="center">
-        <Form form={form} layout="vertical" requiredMark={false} style={{ width: 280 }} onFinish={onSubmit}>
-          <Form.Item name="nickname" rules={[{ required: true, message: t("placeholder") }]}>
+        <Form
+          form={form}
+          layout="vertical"
+          requiredMark={false}
+          style={{ width: 280 }}
+          onFinish={handleFinish}
+        >
+          <Form.Item
+            name="nickname"
+            rules={[{ required: true, message: t("placeholder") }]}
+          >
             <Input placeholder={t("placeholder")} />
           </Form.Item>
           <Form.Item>

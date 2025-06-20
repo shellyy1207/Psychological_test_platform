@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 const { Title, Paragraph } = Typography;
 
+// 介紹畫面
 const IntroScreen = ({ onStart }) => {
   const { t } = useTranslation();
 
