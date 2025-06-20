@@ -28,45 +28,47 @@ const ResultPage = () => {
   const [copied, setCopied] = useState(false);
   const shareUrl = "http://localhost:3000/about";
 
+  // 根據分數計算結果角色
   const resultCharacter = scores
     ? Object.entries(scores).reduce((a, b) => (b[1] > a[1] ? b : a))[0]
     : null;
 
+  // 根據結果角色取得圖片連結
   const imageUrl = characterImages[resultCharacter];
+  // 根據結果角色取得描述
   const description = t(`characterDescriptions.${resultCharacter}`);
 
-  const [hasSaved, setHasSaved] = useState(false);
 
-useEffect(() => {
-  if (nickname && resultCharacter) {
-    const resultData = {
-      nickname,
-      character: resultCharacter,
-      time: new Date().toISOString()
-    };
+  useEffect(() => {
+    if (nickname && resultCharacter) {
+      const resultData = {
+        nickname,
+        character: resultCharacter,
+        time: new Date().toISOString()
+      };
 
-    // 儲存最後一次結果
-    localStorage.setItem("sanrio-last-result", JSON.stringify(resultData));
+      // 儲存結果到 localStorage
+      localStorage.setItem("sanrio-last-result", JSON.stringify(resultData));
 
-    // 檢查並儲存歷史紀錄
-    const historyKey = "sanrio-history";
-    const existing = localStorage.getItem(historyKey);
-    const parsed = existing ? JSON.parse(existing) : [];
+      // 檢查並儲存歷史紀錄
+      const historyKey = "sanrio-history";
+      const existing = localStorage.getItem(historyKey);
+      const parsed = existing ? JSON.parse(existing) : [];
 
-    // 去重檢查：如果上一筆相同就不加
-    const last = parsed[0]; // 最新一筆
-    const isSame =
-      last &&
-      last.nickname === resultData.nickname &&
-      last.character === resultData.character;
+      const last = parsed[0]; 
+      const isSame =
+        last &&
+        last.nickname === resultData.nickname &&
+        last.character === resultData.character;
 
-    if (!isSame) {
-      const updatedHistory = [resultData, ...parsed];
-      localStorage.setItem(historyKey, JSON.stringify(updatedHistory));
+      if (!isSame) {
+        const updatedHistory = [resultData, ...parsed];
+        localStorage.setItem(historyKey, JSON.stringify(updatedHistory));
+      }
     }
-  }
-}, [nickname, resultCharacter]);
+  }, [nickname, resultCharacter]);
 
+  // 如果沒有分數或暱稱，顯示錯誤訊息
   if (!scores || !nickname) {
     return (
       <div style={{ textAlign: "center", padding: "2rem" }}>
@@ -79,12 +81,15 @@ useEffect(() => {
   }
 
   return (
+    // 外層
     <div style={{ padding: "2rem", display: "flex", justifyContent: "center" }}>
+      {/* 動畫 */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
+        {/* 卡片 */}
         <Card
           variant="borderless"
           style={{
@@ -95,6 +100,7 @@ useEffect(() => {
             borderRadius: "16px",
           }}
         >
+          {/* 卡片內容 */}
           <Space direction="vertical" size="middle" style={{ width: "100%" }}>
             <Title level={3}>{t("your_result", { nickname })}</Title>
             <Title level={2} style={{ color: "#ff69b4" }}>{resultCharacter} 🎉</Title>
@@ -113,14 +119,17 @@ useEffect(() => {
                 {t("share_prompt")}
               </Paragraph>
               <Space>
+                {/* Facebook 分享按鈕 */}
                 <FacebookShareButton url={shareUrl} quote={t("share_message", { character: resultCharacter })}>
                   <FacebookIcon size={32} round />
                 </FacebookShareButton>
 
+                {/* Line 分享按鈕 */}
                 <LineShareButton url={shareUrl} title={t("share_message", { character: resultCharacter })}>
                   <LineIcon size={32} round />
                 </LineShareButton>
 
+                {/* 複製連結按鈕 */}
                 <CopyToClipboard
                   text={shareUrl}
                   onCopy={() => {
@@ -157,7 +166,7 @@ useEffect(() => {
         </Card>
       </motion.div>
 
-      {/* ✅ 複製成功動畫 */}
+      {/* 複製成功動畫 */}
       <AnimatePresence>
         {copied && (
           <motion.div

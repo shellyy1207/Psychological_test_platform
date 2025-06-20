@@ -1,38 +1,41 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react"; 
+import { useLocation, useNavigate } from "react-router-dom"; 
 import { useTranslation } from "react-i18next";
-import questions from "../questions";
+import questions from "../questions"; 
 
 import { Typography, Button, Progress, Space } from "antd";
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph } = Typography; 
 
 const TestPage = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { t } = useTranslation();
-  const nickname = location.state?.nickname || "你";
+  // 測驗頁面 component
+  const navigate = useNavigate(); 
+  const location = useLocation(); 
+  const { t } = useTranslation(); 
+  const nickname = location.state?.nickname ;
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [scores, setScores] = useState({});
-  const totalQuestions = questions.length;
+  const [currentQuestion, setCurrentQuestion] = useState(0); 
+  const [scores, setScores] = useState({}); // 儲存每個角色的分數
+  const totalQuestions = questions.length; 
+  const q = questions[currentQuestion]; 
+  const progress = Math.round(((currentQuestion + 1) / totalQuestions) * 100); // 計算測驗進度
+
 
   const handleAnswer = (character) => {
+    // 回答問題的 function
     setScores((prev) => ({
       ...prev,
-      [character]: (prev[character] || 0) + 1,
+      [character]: (prev[character] || 0) + 1, // 將該角色的分數+1
     }));
 
     if (currentQuestion < totalQuestions - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       navigate("/result-loading", {
-        state: { nickname, scores }
+        state: { nickname, scores } 
       });
     }
   };
 
-  const q = questions[currentQuestion];
-  const progress = Math.round(((currentQuestion + 1) / totalQuestions) * 100);
 
   return (
     <div style={styles.container}>

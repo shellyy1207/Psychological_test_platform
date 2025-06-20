@@ -1,29 +1,30 @@
-import React, { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { Spin, Typography } from "antd";
-import { useTranslation } from "react-i18next";
+import React, { useEffect } from "react"; 
+import { useNavigate, useLocation } from "react-router-dom"; 
+import { Spin, Typography } from "antd"; 
+import { useTranslation } from "react-i18next"; 
 
-const { Paragraph } = Typography;
+const { Paragraph } = Typography; 
 
 const ResultLoading = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { t } = useTranslation();
-  const { nickname, scores } = location.state || {};
+  // 結果載入頁面 component
+  const navigate = useNavigate(); 
+  const location = useLocation(); 
+  const { t } = useTranslation(); 
+  const { nickname, scores } = location.state || {}; 
 
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/result", {
-        state: { nickname, scores }
+        state: { nickname, scores } 
       });
-    }, 3000); // 模擬計算 3 秒
+    }, 3000); 
 
-    return () => clearTimeout(timer);
-  }, [navigate, nickname, scores]);
+    return () => clearTimeout(timer); 
+  }, [navigate, nickname, scores]); 
 
   return (
     <div style={styles.container}>
-      <Spin size="large" />
+      <Spin size="large" /> 
       <Paragraph style={styles.text}>
         {t("calculating_result") || "正在分析你的結果..."}
       </Paragraph>
@@ -46,4 +47,4 @@ const styles = {
   }
 };
 
-export default ResultLoading;
+export default ResultLoading; 

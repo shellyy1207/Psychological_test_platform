@@ -1,13 +1,14 @@
-import React from "react";
-import { Typography } from "antd";
+import React, { useState } from "react"; 
+import { Typography, Modal } from "antd"; 
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
-import "swiper/css";
+import "swiper/css";// 引入 Swiper 樣式
 import "swiper/css/effect-coverflow";
 
 const { Title, Paragraph } = Typography;
 
+  // 角色資料
 const characters = [
   {
     name: "大耳狗",
@@ -39,6 +40,14 @@ const characters = [
 const AboutPage = () => {
   const { t } = useTranslation();
 
+  const [modalVisible, setModalVisible] = useState(false); // 控制 Modal 狀態
+  const [selectedImage, setSelectedImage] = useState(""); 
+
+  const handleClick = (imgUrl) => {
+    setSelectedImage(imgUrl);
+    setModalVisible(true);
+  };
+
   return (
     <div style={styles.container}>
       <Title level={2}>{t("about_title")}</Title>
@@ -50,6 +59,7 @@ const AboutPage = () => {
       </Title>
 
       <div style={{ marginTop: "2rem" }}>
+      {/* Swiper 輪播容器 */}
         <Swiper
           effect={"coverflow"}
           grabCursor={true}
@@ -69,13 +79,27 @@ const AboutPage = () => {
         >
           {characters.map((char, idx) => (
             <SwiperSlide key={idx} style={styles.slide}>
-              <div style={styles.cardWrapper}>
+              <div
+                style={styles.cardWrapper}
+                onClick={() => handleClick(char.image)} 
+              >
                 <img src={char.image} alt={char.name} style={styles.cardImage} />
                 <p style={styles.caption}>{t(`characters.${char.key}`)}</p>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Modal 彈窗展示圖片 */}
+        <Modal
+          open={modalVisible}
+          footer={null}
+          onCancel={() => setModalVisible(false)}
+          centered
+          width={600}
+        >
+          <img src={selectedImage} alt="character" style={{ width: "100%" }} />
+        </Modal>
       </div>
     </div>
   );
@@ -106,6 +130,8 @@ const styles = {
     padding: "8px",
     backgroundColor: "#fff",
     boxShadow: "0 6px 12px rgba(0, 0, 0, 0.05)",
+    cursor: "pointer", // ⭐ 游標樣式
+    transition: "transform 0.2s",
   },
   cardImage: {
     width: "100%",
@@ -117,7 +143,7 @@ const styles = {
     marginTop: "0.5rem",
     fontWeight: "bold",
     color: "#f78fb3",
-  }
+  },
 };
 
 export default AboutPage;

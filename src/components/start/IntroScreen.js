@@ -11,7 +11,7 @@ const IntroScreen = ({ onStart }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0 }} // 淡入效果
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}

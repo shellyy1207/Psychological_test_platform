@@ -21,6 +21,7 @@ const HistoryPage = () => {
     }
   }, []);
 
+  // 清除歷史紀錄
   const handleClear = () => {
     localStorage.removeItem("sanrio-history");
     setHistory([]);

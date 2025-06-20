@@ -1,35 +1,35 @@
-import React, { useEffect, useRef, useState } from "react";
-import { SoundOutlined, SoundFilled } from "@ant-design/icons";
-import { Routes, Route, useLocation, Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { Button, Space, Tooltip } from "antd";
-import "./i18n";
+import React, { useEffect, useRef, useState } from "react"; 
+import { SoundOutlined, SoundFilled } from "@ant-design/icons"; 
+import { Routes, Route, useLocation, Link } from "react-router-dom"; 
+import { useTranslation } from "react-i18next"; 
+import { Button, Space, Tooltip } from "antd"; 
+import "./i18n"; 
 
-import StartPage from "./pages/StartPage";
-import AboutPage from "./pages/AboutPage";
-import HistoryPage from "./pages/HistoryPage";
-import TestPage from "./pages/TestPage";
-import ResultLoading from "./pages/ResultLoading";
-import ResultPage from "./pages/ResultPage";
+import StartPage from "./pages/StartPage"; 
+import AboutPage from "./pages/AboutPage"; 
+import HistoryPage from "./pages/HistoryPage"; 
+import TestPage from "./pages/TestPage"; 
+import ResultLoading from "./pages/ResultLoading"; 
+import ResultPage from "./pages/ResultPage"; 
 import Footer from "./components/Footer";
 
 function App() {
-  const { i18n, t } = useTranslation();
-  const location = useLocation();
-  const audioRef = useRef(null);
-  const [muted, setMuted] = useState(false);
+  const { i18n, t } = useTranslation(); // 取得 i18n instance 和 t function 
+  const location = useLocation(); 
+  const audioRef = useRef(null); 
+  const [muted, setMuted] = useState(false); // 用來控制音樂是否靜音
 
   useEffect(() => {
     if (
-      location.pathname === "/" ||
-      ["/test", "/result-loading", "/result"].includes(location.pathname)
+      location.pathname === "/" || 
+      ["/test", "/result-loading", "/result"].includes(location.pathname) 
     ) {
-      audioRef.current?.play().catch(() => {});
+      audioRef.current?.play().catch(() => {}); 
     } else {
       audioRef.current?.pause();
       audioRef.current.currentTime = 0;
     }
-  }, [location]);
+  }, [location]); 
 
   return (
     <div style={styles.pageWrapper}>
@@ -86,6 +86,7 @@ function App() {
       {/* Main Content */}
       <div style={styles.main}>
         <Routes>
+          {/* 定義路由 */}
           <Route path="/" element={<StartPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/history" element={<HistoryPage />} />
@@ -123,7 +124,7 @@ const styles = {
   },
   main: {
     flex: 1,
-    paddingTop: "80px",
+    paddingTop: "80px", 
   },
   left: {
     display: "flex",
