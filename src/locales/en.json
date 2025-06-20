@@ -30,8 +30,8 @@
     },
 
     "transition_text": "You are walking home, with sunlight filtering through the leaves, yawning and thinking about what to have for dinner, when suddenly everything goes black and you faint!",
-    
-    "last_result_title": "Last Test Result",
+
+    "last_result_title": "Recent Test Result",
     "last_result_tip": "{{name}}'s last character was: {{character}} 🎀",
     "last_result_time": "Test Time: {{time}}",
     "clear_history": "Clear History",

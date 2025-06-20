@@ -31,7 +31,7 @@
 
     "transition_text": "あなたは家に帰る途中、木の葉の間から差し込む太陽の光を浴びながら歩いています，\nあくびをしながら夕食に何を食べるか考えていると、突然目の前が真っ暗になり、気を失ってしまいました！",
 
-    "last_result_title": "前回の診断結果",
+    "last_result_title": "最近の診断結果",
     "last_result_tip": "前回、{{name}}さんの結果は：{{character}} 🎀",
     "last_result_time": "診断日時：{{time}}",
     "clear_history": "履歴をクリア",
